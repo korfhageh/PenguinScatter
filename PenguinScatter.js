@@ -48,5 +48,78 @@ var yScale = d3.scaleLinear()
 .domain([0,100])
 .range([500,0])
 
+var tooltip = d3.select("circle")
+.append("img")
 
+.style("opacity", 0)
+
+.attr("class","tooltip")
+
+var clearplot = function(student)
+{
+    d3.select("#Final vs HWMean")
+    .selectAll(circle)
+    .remove()
+}
+var createplot = function(students)
+{
+    d3.select("#Final vs HWMean")
+    .on "click", function(students)
+    {
+        clearplot();
+    }
+}
+
+var clearplot = function(student)
+{
+    d3.select("#HWMean vs QMean")
+    .selectAll(circle)
+    .remove()
+}
+var createplot = function(students)
+{
+    d3.select("#HWMean vs QMean")
+    .on "click", function(students)
+    {
+        clearplot();
+    }
+}
+
+var clearplot = function(student)
+{
+    d3.select("#Test Mean vs Quiz Mean")
+    .selectAll(circle)
+    .remove()
+}
+var createplot = function(students)
+{
+    d3.select("#Test Mean vs Quiz Mean")
+    .on "click", function(students)
+    {
+        clearplot();
+    }
+}
+
+var clearplot = function(student)
+{
+    d3.select("#Test Mean vs Final Mean")
+    .selectAll(circle)
+    .remove()
+}
+var createplot = function(students)
+{
+    d3.select("#Test Mean vs Final Mean")
+    .on "click", function(students)
+    {
+        clearplot();
+    }
+}
+
+
+.on("mouseover", student.img)
+.on("mouseout", function()
+   {
+    d3.select("img")
+}
+   )
 
