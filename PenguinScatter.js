@@ -1,39 +1,52 @@
 var penguinPromise = d3.json("classData.json")
 penguinPromise.then(
 function(students)
-{console.log("worked",students);
-},
+{console.log("worked",students);},
 function(err)
-    {console.log("failed",err);}
+{console.log("failed",err);}
+
 )
 
-//getting final grade
-var finalgrade = function(student)
+//getting homework mean
+var getHWavg = function(student)
 {
-    return student.final[0].grade; 
+homework = student.homework;
+allhwgrades = homework.map(function(HW){return hw.grade});
+meangrades = d3.mean(allhwgrades);
+return Math.round(meangrades);
 }
 
-//getting homework mean
-var getHomeworkMean = funtion(student)
+//getting test mean
+var getTestavg = function(student)
 {
-    HWmean = homework.map(funtion(homework){return homework.grade});
-    HomeworkMean = d3.mean(HWmean);
-    return HomeworkMean;
+tests = student.test;
+allTestgrades = tests.map(function(test){return test.grade});
+meangrades = d3.mean(allTestgrades)
+return Math.round(meangrades);
 }
+
+//getting final grade
+var getFinal = function(student)
+{return student.final[0].grade;}
 
 //getting quiz mean
-var getQuizMean = function(student)
+var getQuizavg = function(student)
 {
-    Qmean = quiz.map(funtion(quiz){return quiz.grade});
-    MeanofQuizes = d3.mean(Qmean);
-    return MeanofQuizes;
+    quizes = student.quizes;
+    allQuizgrades = quizes.map(function(quiz){return quiz.grade});
+    meangrades = d3.mean(allQuizgrades);
+    return Math.round(meangrades);
 }
 
-//getting Test Mean
-var getTestMean
-{
-    Tmean - test.map(funtion(test){return test.grade});
-    MeanofTests = d3.mean(Tmean);
-    return MeanofTests;
-}
+
+//scaling
+var xScale =d3.scaleLinear()
+.domain([0,100])
+.range([0,500])
+
+var yScale = d3.scaleLinear()
+.domain([0,100])
+.range([500,0])
+
+
 
